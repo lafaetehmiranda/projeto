@@ -126,8 +126,8 @@ public class PrimeiraCalsse {
             }
         }
  */
-
-        //
+/*
+        //TODO Pequeno programa de media
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Digite a primeira nota do aluno: ");
@@ -150,5 +150,6 @@ public class PrimeiraCalsse {
             System.out.println("Aluno Esta Reprovado " + formaterCasasDecimais(media));
         }
         sc.close();
+ */
     }
 }
