@@ -1,10 +1,5 @@
 package classeExecutavel;
 
-import java.math.BigDecimal;
-import java.util.Scanner;
-
-import static enums.TratativasDeArredondamentoEnum.formaterCasasDecimais;
-
 public class PrimeiraCalsse {
     public static void main(String[] args) {
 /*
