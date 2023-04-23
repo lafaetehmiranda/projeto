@@ -2,8 +2,10 @@ package classeExecutavel;
 
 import classeAluno.Aluno;
 import classeAluno.Disciplina;
+import constantes.StatusAlunos;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,11 +15,29 @@ public class PrimeiraClasseAluno {
 
     public static void main(String[] args) {
 
+
         Scanner sc = new Scanner(System.in);
+
+        //todo parte simples para fazer uma validação de acesso
+        System.out.println("Informe a login:");
+        String login = sc.next();
+
+        System.out.println("Informe a senha:");
+        String senha = sc.next();
+
+        if(login.equals("admin") && senha.equals("admin123")){
 
         List<Aluno> alunos = new ArrayList<Aluno>();
 
-        for (int qtd= 1; qtd <=3; qtd++) {
+        //todo HashMap é uma lista que temos uma chave que identifica uma sequencia de valores
+        HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>() ;
+
+        //List<Aluno> alunosAprovados = new ArrayList<Aluno>();
+        //List<Aluno> alunosRecuperacao = new ArrayList<Aluno>();
+        //List<Aluno> alunosReprovado = new ArrayList<Aluno>();
+
+
+        for (int qtd= 1; qtd <=5; qtd++) {
 
             System.out.println("Digite o nome do aluno: ");
             String nome = sc.next();
@@ -80,6 +100,37 @@ public class PrimeiraClasseAluno {
             alunos.add(aluno1);
         }
 
+        //todo tem que inicializar o hashMap com put e depois s e pega com get
+        maps.put(StatusAlunos.APROVADO, new ArrayList<Aluno>());
+        maps.put(StatusAlunos.RECUPERACAO, new ArrayList<Aluno>());
+        maps.put(StatusAlunos.REPROVADO, new ArrayList<Aluno>());
+
+        for (Aluno aluno : alunos) {
+
+            if(aluno.respostaAprovavao().equals(StatusAlunos.APROVADO)){
+                maps.get(StatusAlunos.APROVADO).add(aluno);
+            }else if(aluno.respostaAprovavao().equals(StatusAlunos.RECUPERACAO)){
+                maps.get(StatusAlunos.REPROVADO).add(aluno);
+            }else {
+                maps.get(StatusAlunos.RECUPERACAO).add(aluno);
+            }
+        }
+
+        System.out.println("Lista do pessoal aprovado :" );
+        for (Aluno aluno: maps.get(StatusAlunos.APROVADO)) {
+            System.out.println("Resultado:" + aluno.respostaAprovavao() + aluno.calculoDasMedias());
+        }
+        System.out.println("Lista do pessoal reprovados :" );
+        for (Aluno aluno: maps.get(StatusAlunos.RECUPERACAO)) {
+            System.out.println("Resultado:" + aluno.respostaAprovavao() + aluno.calculoDasMedias());
+        }
+        System.out.println("Lista do pessoal recuperacao :" );
+        for (Aluno aluno: maps.get(StatusAlunos.REPROVADO)) {
+            System.out.println("Resultado:" + aluno.respostaAprovavao() + aluno.calculoDasMedias());
+        }
+
+
+        /*
         //TODO exemplo de laço de repetição por posções
         for (int pos = 0; pos <alunos.size(); pos++){
 
@@ -102,6 +153,7 @@ public class PrimeiraClasseAluno {
                     System.out.println(disc.getDisciplina());
                 }
             }
+         */
 
 
 
@@ -131,6 +183,6 @@ public class PrimeiraClasseAluno {
 
         sc.close();
     }
-
+  }
 
 }

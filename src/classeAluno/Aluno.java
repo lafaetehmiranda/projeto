@@ -1,5 +1,7 @@
 package classeAluno;
 
+import constantes.StatusAlunos;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,12 +106,12 @@ public class Aluno {
 
         if (media >= 70) {
             if (media >= 40 && media <= 55) {
-                return "Aluno Passou Parabens! " + formaterCasasDecimais(media);
+                return StatusAlunos.APROVADO + formaterCasasDecimais(media);
             } else {
-                return "Aluno Esta em recuperação " + formaterCasasDecimais(media);
+                return StatusAlunos.RECUPERACAO + formaterCasasDecimais(media);
             }
             } else{
-                return "Aluno Esta Reprovado " + formaterCasasDecimais(media);
+                return StatusAlunos.REPROVADO + formaterCasasDecimais(media);
             }
     }
 
