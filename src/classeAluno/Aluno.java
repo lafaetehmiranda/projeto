@@ -7,13 +7,8 @@ import java.util.List;
 
 import static util.TratativasDeArredondamentoUtil.formaterCasasDecimais;
 
-public class Aluno {
+public class Aluno  extends Pessoa{
 
-    private String nome;
-    private int idade ;
-    private String dataNascimento;
-    private String numeroCpf;
-    private String registroGeral;
     private String dataMatricula;
     private String serieMatriculada;
 
@@ -25,46 +20,6 @@ public class Aluno {
 
     /*todo SETTERS - é para adicionar ou receber dados para os atributos */
     /*todo GETTERS - é para resgatar ou obter o valor do atributo*/
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getNumeroCpf() {
-        return numeroCpf;
-    }
-
-    public void setNumeroCpf(String numeroCpf) {
-        this.numeroCpf = numeroCpf;
-    }
-
-    public String getRegistroGeral() {
-        return registroGeral;
-    }
-
-    public void setRegistroGeral(String registroGeral) {
-        this.registroGeral = registroGeral;
-    }
 
 
     public String getDataMatricula() {
@@ -118,13 +73,9 @@ public class Aluno {
     @Override
     public String toString() {
         return "Aluno{" +
-                "nome='" + nome + '\'' +
-                ", idade=" + idade +
-                ", dataNascimento='" + dataNascimento + '\'' +
-                ", numeroCpf='" + numeroCpf + '\'' +
-                ", registroGeral='" + registroGeral + '\'' +
-                ", dataMatricula='" + dataMatricula + '\'' +
+                "dataMatricula='" + dataMatricula + '\'' +
                 ", serieMatriculada='" + serieMatriculada + '\'' +
+                ", disciplinas=" + disciplinas +
                 '}';
     }
 }
