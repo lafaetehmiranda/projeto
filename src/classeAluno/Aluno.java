@@ -78,4 +78,9 @@ public class Aluno  extends Pessoa{
                 ", disciplinas=" + disciplinas +
                 '}';
     }
+
+    @Override
+    public boolean pessoaMaiorIdade() {
+        return super.pessoaMaiorIdade();
+    }
 }

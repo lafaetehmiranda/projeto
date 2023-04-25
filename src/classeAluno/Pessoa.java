@@ -1,6 +1,6 @@
 package classeAluno;
 
-public class Pessoa {
+public abstract class Pessoa {
 
      String nome;
      int idade ;
@@ -47,4 +47,9 @@ public class Pessoa {
     public void setRegistroGeral(String registroGeral) {
         this.registroGeral = registroGeral;
     }
+
+    public boolean pessoaMaiorIdade (){
+        return idade >= 18;
+    }
+
 }
