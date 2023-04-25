@@ -1,8 +1,9 @@
 package classeExecutavel;
 
-import classeAluno.Aluno;
-import classeAluno.Disciplina;
+import entities.Aluno;
+import entities.Disciplina;
 import constantes.StatusAlunos;
+import entities.Secretaria;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +26,7 @@ public class PrimeiraClasseAluno {
         System.out.println("Informe a senha:");
         String senha = sc.next();
 
-        if(login.equals("admin") && senha.equals("admin123")){
+        if(login.equals("admin") && senha.equals("admin")){
 
         List<Aluno> alunos = new ArrayList<Aluno>();
 

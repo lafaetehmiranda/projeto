@@ -1,4 +1,4 @@
-package classeAluno;
+package entities;
 
 public class Disciplina {
 
