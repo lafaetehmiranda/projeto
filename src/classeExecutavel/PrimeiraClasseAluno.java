@@ -4,6 +4,7 @@ import entities.Aluno;
 import entities.Disciplina;
 import constantes.StatusAlunos;
 import entities.Secretaria;
+import excepition.TratativaErro;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,32 +17,35 @@ public class PrimeiraClasseAluno {
 
     public static void main(String[] args) {
 
-
-        Scanner sc = new Scanner(System.in);
-
-        //todo parte simples para fazer uma validação de acesso
-        System.out.println("Informe a login:");
-        String login = sc.next();
-
-        System.out.println("Informe a senha:");
-        String senha = sc.next();
-
-        if(login.equals("admin") && senha.equals("admin")){
-
-        List<Aluno> alunos = new ArrayList<Aluno>();
-
-        //todo HashMap é uma lista que temos uma chave que identifica uma sequencia de valores
-        HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>() ;
-
-        //List<Aluno> alunosAprovados = new ArrayList<Aluno>();
-        //List<Aluno> alunosRecuperacao = new ArrayList<Aluno>();
-        //List<Aluno> alunosReprovado = new ArrayList<Aluno>();
+        try {
 
 
-        for (int qtd= 1; qtd <=5; qtd++) {
+            Scanner sc = new Scanner(System.in);
 
-            System.out.println("Digite o nome do aluno: ");
-            String nome = sc.next();
+            //todo parte simples para fazer uma validação de acesso
+            System.out.println("Informe a login:");
+            String login = sc.next();
+
+            System.out.println("Informe a senha:");
+            String senha = sc.next();
+
+
+            if (login.equals("admin") && senha.equals("admin")) {
+
+                List<Aluno> alunos = new ArrayList<Aluno>();
+
+                //todo HashMap é uma lista que temos uma chave que identifica uma sequencia de valores
+                HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
+
+                //List<Aluno> alunosAprovados = new ArrayList<Aluno>();
+                //List<Aluno> alunosRecuperacao = new ArrayList<Aluno>();
+                //List<Aluno> alunosReprovado = new ArrayList<Aluno>();
+
+
+                for (int qtd = 1; qtd <= 5; qtd++) {
+
+                    System.out.println("Digite o nome do aluno: ");
+                    String nome = sc.next();
 
 /*
         System.out.println("Digite a data da Matricula do aluno: ");
@@ -58,8 +62,8 @@ public class PrimeiraClasseAluno {
         String serieMatriculada = sc.next();
 
   */
-            Aluno aluno1 = new Aluno();
-            aluno1.setNome(nome);
+                    Aluno aluno1 = new Aluno();
+                    aluno1.setNome(nome);
         /*
         aluno1.setDataMatricula(dataMatricula);
         aluno1.setDataNascimento(dataNascimento);
@@ -69,66 +73,66 @@ public class PrimeiraClasseAluno {
         aluno1.setSerieMatriculada(serieMatriculada);
          */
 
-            for (int posicao = 1; posicao <= 2; posicao++) {
-                System.out.println("Digite a Disciplina do aluno: " + posicao);
-                String nomeDisciplina = sc.next();
-                System.out.println("Digite a primeira nota do aluno: " + posicao);
-                String nota = sc.next();
-                Disciplina disciplina = new Disciplina();
-                disciplina.setDisciplina(nomeDisciplina);
-                disciplina.setNota(Double.valueOf(nota));
+                    for (int posicao = 1; posicao <= 2; posicao++) {
+                        System.out.println("Digite a Disciplina do aluno: " + posicao);
+                        String nomeDisciplina = sc.next();
+                        System.out.println("Digite a primeira nota do aluno: " + posicao);
+                        String nota = sc.next();
+                        Disciplina disciplina = new Disciplina();
+                        disciplina.setDisciplina(nomeDisciplina);
+                        disciplina.setNota(Double.valueOf(nota));
 
-                aluno1.getDisciplinas().add(disciplina);
-            }
+                        aluno1.getDisciplinas().add(disciplina);
+                    }
 
-            System.out.println("Quer retirar alguma disciplina ? ");
-            boolean escolhas = sc.nextBoolean();
+                    System.out.println("Quer retirar alguma disciplina ? ");
+                    boolean escolhas = sc.nextBoolean();
 
 
-            if (escolhas == true) {
+                    if (escolhas == true) {
 
-                boolean continuarRemovendo = true;
-                int posicao = 1;
+                        boolean continuarRemovendo = true;
+                        int posicao = 1;
 
-                while (continuarRemovendo == true) {
-                    System.out.println("Qual a disciplina quer remover ? ");
-                    String disciplinaRemover = sc.next();
-                    aluno1.getDisciplinas().remove(Integer.valueOf(disciplinaRemover).intValue() - posicao);
-                    System.out.println("quer continuar removendo?");
-                    continuarRemovendo = sc.nextBoolean();
+                        while (continuarRemovendo == true) {
+                            System.out.println("Qual a disciplina quer remover ? ");
+                            String disciplinaRemover = sc.next();
+                            aluno1.getDisciplinas().remove(Integer.valueOf(disciplinaRemover).intValue() - posicao);
+                            System.out.println("quer continuar removendo?");
+                            continuarRemovendo = sc.nextBoolean();
+                        }
+                    }
+                    alunos.add(aluno1);
                 }
-            }
-            alunos.add(aluno1);
-        }
 
-        //todo tem que inicializar o hashMap com put e depois s e pega com get
-        maps.put(StatusAlunos.APROVADO, new ArrayList<Aluno>());
-        maps.put(StatusAlunos.RECUPERACAO, new ArrayList<Aluno>());
-        maps.put(StatusAlunos.REPROVADO, new ArrayList<Aluno>());
+                //todo tem que inicializar o hashMap com put e depois s e pega com get
+                maps.put(StatusAlunos.APROVADO, new ArrayList<Aluno>());
+                maps.put(StatusAlunos.RECUPERACAO, new ArrayList<Aluno>());
+                maps.put(StatusAlunos.REPROVADO, new ArrayList<Aluno>());
 
-        for (Aluno aluno : alunos) {
+                for (Aluno aluno : alunos) {
 
-            if(aluno.respostaAprovavao().equals(StatusAlunos.APROVADO)){
-                maps.get(StatusAlunos.APROVADO).add(aluno);
-            }else if(aluno.respostaAprovavao().equals(StatusAlunos.RECUPERACAO)){
-                maps.get(StatusAlunos.REPROVADO).add(aluno);
-            }else {
-                maps.get(StatusAlunos.RECUPERACAO).add(aluno);
-            }
-        }
+                    if (aluno.respostaAprovavao().equals(StatusAlunos.APROVADO)) {
+                        maps.get(StatusAlunos.APROVADO).add(aluno);
+                    } else if (aluno.respostaAprovavao().equals(StatusAlunos.RECUPERACAO)) {
+                        maps.get(StatusAlunos.REPROVADO).add(aluno);
+                    } else {
+                        maps.get(StatusAlunos.RECUPERACAO).add(aluno);
+                    }
+                }
 
-        System.out.println("Lista do pessoal aprovado :" );
-        for (Aluno aluno: maps.get(StatusAlunos.APROVADO)) {
-            System.out.println("Resultado:" + aluno.respostaAprovavao() + aluno.calculoDasMedias());
-        }
-        System.out.println("Lista do pessoal reprovados :" );
-        for (Aluno aluno: maps.get(StatusAlunos.RECUPERACAO)) {
-            System.out.println("Resultado:" + aluno.respostaAprovavao() + aluno.calculoDasMedias());
-        }
-        System.out.println("Lista do pessoal recuperacao :" );
-        for (Aluno aluno: maps.get(StatusAlunos.REPROVADO)) {
-            System.out.println("Resultado:" + aluno.respostaAprovavao() + aluno.calculoDasMedias());
-        }
+                System.out.println("Lista do pessoal aprovado :");
+                for (Aluno aluno : maps.get(StatusAlunos.APROVADO)) {
+                    System.out.println("Resultado:" + aluno.respostaAprovavao() + aluno.calculoDasMedias());
+                }
+                System.out.println("Lista do pessoal reprovados :");
+                for (Aluno aluno : maps.get(StatusAlunos.RECUPERACAO)) {
+                    System.out.println("Resultado:" + aluno.respostaAprovavao() + aluno.calculoDasMedias());
+                }
+                System.out.println("Lista do pessoal recuperacao :");
+                for (Aluno aluno : maps.get(StatusAlunos.REPROVADO)) {
+                    System.out.println("Resultado:" + aluno.respostaAprovavao() + aluno.calculoDasMedias());
+                }
 
 
         /*
@@ -157,9 +161,7 @@ public class PrimeiraClasseAluno {
          */
 
 
-
-
-        //TODO exemplo de laço de repetição
+                //TODO exemplo de laço de repetição
 /*
         for (Aluno aluno: alunos) {
 
@@ -182,8 +184,14 @@ public class PrimeiraClasseAluno {
         }
  */
 
-        sc.close();
-    }
-  }
+                sc.close();
+            }
+        } catch (NumberFormatException e){
+            e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
 
+        }
+
+    }
 }
