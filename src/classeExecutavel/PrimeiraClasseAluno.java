@@ -80,7 +80,7 @@ public class PrimeiraClasseAluno {
                         String nota = sc.next();
                         Disciplina disciplina = new Disciplina();
                         disciplina.setDisciplina(nomeDisciplina);
-                        disciplina.setNota(Double.valueOf(nota));
+                       // disciplina.setNota(Double.valueOf(nota));
 
                         aluno1.getDisciplinas().add(disciplina);
                     }
