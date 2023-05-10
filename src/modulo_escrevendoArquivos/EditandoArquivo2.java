@@ -1,14 +1,12 @@
 package modulo_escrevendoArquivos;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 
 //TODO Este exemplo para editar uma celula que ja existe
 
 public class EditandoArquivo2 {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
 
         File file = new File("C:\\Users\\amand\\IdeaProjects\\projeto1\\src\\modulo_escrevendoArquivos\\arquivo_excel.xls");
 
