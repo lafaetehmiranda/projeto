@@ -34,7 +34,8 @@ public class Escrevendo {
 
         final Logger LOGGER = Logger.getLogger(String.valueOf(Escrevendo.class));
 
-        File arquivo =  new File("C:\\Users\\amand\\IdeaProjects\\projeto1\\src\\modulo_escrevendoArquivos\\arquivo.txt");
+        //todo escrevendo um arquivo txt, csv 
+        File arquivo =  new File("C:\\Users\\amand\\IdeaProjects\\projeto1\\src\\modulo_escrevendoArquivos\\arquivo.csv");
 
         if(!arquivo.exists()){
                 arquivo.createNewFile();
