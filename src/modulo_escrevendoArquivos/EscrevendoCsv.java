@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 
-public class Escrevendo {
+public class EscrevendoCsv {
 
     public static void main(String[] args) throws IOException {
 
@@ -32,7 +32,7 @@ public class Escrevendo {
         listGente.add(gente2);
         listGente.add(gente3);
 
-        final Logger LOGGER = Logger.getLogger(String.valueOf(Escrevendo.class));
+        final Logger LOGGER = Logger.getLogger(String.valueOf(EscrevendoCsv.class));
 
         //todo escrevendo um arquivo txt, csv 
         File arquivo =  new File("C:\\Users\\amand\\IdeaProjects\\projeto1\\src\\modulo_escrevendoArquivos\\arquivo.csv");
